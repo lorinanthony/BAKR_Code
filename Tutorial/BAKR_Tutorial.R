@@ -74,8 +74,8 @@ p = dim(X)[2] #Number of markers or genes
 K_tilde = ApproxGaussKernel(t(X_train),p,p)
 
 ### Center the Approximate Kernel Matrix for numerical stability ###
-v=matrix(1, n, 1)
-M=diag(n)-v%*%t(v)/n
+v=matrix(1, floor(0.8*n), 1)
+M=diag(floor(0.8*n))-v%*%t(v)/floor(0.8*n)
 Kn=M%*%K_tilde%*%M
 Kn=Kn/mean(diag(Kn))
 
